@@ -8,9 +8,8 @@ class Bookkeeper
     if self.class == Purchase
       results = DB.exec("INSERT INTO purchases (amount, description, date_of_purchase) VALUES (#{@amount}, '#{@description}', '#{@date_of_purchase}') RETURNING id;")
       @id = results.first['id'].to_i
-    elsif self.class == User || self.class == Category
-      table_name = self.class.to_s.downcase.pluralize
-      results = DB.exec("INSERT INTO #{table_name} (name) VALUES ('#{@name}') RETURNING id;")
+    elsif self.class == Category
+      results = DB.exec("INSERT INTO categories (name) VALUES ('#{@name}') RETURNING id;")
       @id = results.first['id'].to_i
     end
   end
