@@ -13,6 +13,7 @@ describe Purchase do
   it 'saves the purchases to the database' do
     test_purchase = Purchase.new({'amount' => 599, 'description' => 'kiteboard', 'date_of_purchase' => '2014-11-07'})
     test_purchase.save
+    # binding.pry
     expect(Purchase.all).to eq [test_purchase]
   end
 

@@ -1,4 +1,6 @@
-class User
+require 'bookkeeper'
+
+class User <Bookkeeper
   attr_reader :name, :id
 
   def initialize attributes

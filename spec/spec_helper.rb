@@ -1,5 +1,6 @@
 require 'purchase'
 require 'user'
+require 'bookkeeper'
 require 'rspec'
 require 'pg'
 
