@@ -1,10 +1,15 @@
 require 'bookkeeper'
 
-class Category
-  attr_reader :id, :name
+class Category <Bookkeeper
+  attr_reader :name, :id
 
   def initialize attributes
-    @id = attributes['id'].to_i
     @name = attributes['name']
+    @id = attributes['id'].to_i
+  end
+
+  def == another_category
+    self.id == another_category.id &&
+    self.name == another_category.name
   end
 end

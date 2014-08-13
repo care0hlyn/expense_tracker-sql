@@ -19,13 +19,13 @@ class Purchase <Bookkeeper
     self.date_of_purchase == another_purchase.date_of_purchase
   end
 
-  def self.all
-    results = DB.exec("SELECT * FROM purchases;")
-      purchases = []
-    results.each do |result|
-      purchase = Purchase.new(result)
-      purchases << purchase
-    end
-    purchases
-  end
+  # def self.all
+  #   results = DB.exec("SELECT * FROM purchases;")
+  #     purchases = []
+  #   results.each do |result|
+  #     purchase = Purchase.new(result)
+  #     purchases << purchase
+  #   end
+  #   purchases
+  # end
 end
