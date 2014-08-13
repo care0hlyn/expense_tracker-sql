@@ -1,3 +1,7 @@
+require 'rubygems'
+require 'active_support/core_ext/string/inflections'
+require 'pry'
+
 class Bookkeeper
 
   def save
@@ -9,26 +13,5 @@ class Bookkeeper
       @id = results.first['id'].to_i
     end
   end
-
- def self.all
-
-  if self.class == Purchase
-      results = DB.exec("SELECT * FROM purchases;")
-        purchases = []
-      results.each do |result|
-        purchase = Purchase.new(result)
-        purchases << purchase
-      end
-    purchases
-  elsif self.class == User
-      results = DB.exec("SELECT * FROM users;")
-        users = []
-      results.each do |result|
-        user = Users.new(result)
-        users << user
-      end
-      users
-  end
- end
 
 end
