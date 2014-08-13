@@ -5,10 +5,10 @@ class Purchase
   attr_reader :id, :amount, :description, :date_of_purchase
 
   def initialize attributes
-    @id = attributes[:id].to_i
-    @amount = attributes[:amount]
-    @description = attributes[:description]
-    @date_of_purchase = attributes[:date_of_purchase]
+    @id = attributes['id'].to_i
+    @amount = attributes['amount'].to_i
+    @description = attributes['description']
+    @date_of_purchase = attributes['date_of_purchase']
   end
 
   def ==(another_purchase)
@@ -27,11 +27,7 @@ class Purchase
     results = DB.exec("SELECT * FROM purchases;")
       purchases = []
     results.each do |result|
-      id = result['id']
-      amount = result['amount'].to_i
-      description = result['description']
-      date_of_purchase = result['date_of_purchase']
-      purchase = Purchase.new({:id => id, :amount => amount, :description => description, :date_of_purchase => date_of_purchase})
+      purchase = Purchase.new(result)
       purchases << purchase
     end
     purchases
