@@ -23,10 +23,9 @@ describe Category do
   it 'associates a category id to a purchase' do
     test_category = Category.new({'name' => 'toys'})
     test_category.save
-    test_purchase = Purchase.new({'amount' => 599, 'description' => 'kiteboard', 'date_of_purchase' => '2014-11-07', 'category_id' => test_category.id})
+    test_purchase = Purchase.new({'amount' => 599, 'description' => 'kiteboard', 'date_of_purchase' => '2014-11-07'})
     test_purchase.save
     test_category.add_purchase(test_purchase)
-    # binding.pry
     expect(test_category.purchases).to eq [test_purchase]
   end
 

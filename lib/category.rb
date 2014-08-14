@@ -18,10 +18,11 @@ class Category <Bookkeeper
 
   def add_purchase(purchase)
     DB.exec("UPDATE purchases SET category_id = #{self.id} WHERE id = #{purchase.id};")
+    purchase.instance_variable_set('@category_id', @id)
   end
 
   def purchases
-    results = DB.exec("SELECT * FROM purchases JOIN categories ON (purchases.category_id = categories.id) WHERE categories.id = #{@id};")
+    results = DB.exec("SELECT * FROM purchases WHERE category_id = #{@id};")
     results.each do |result|
       @purchases << Purchase.new(result)
     end

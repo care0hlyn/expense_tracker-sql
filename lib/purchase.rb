@@ -13,7 +13,7 @@ class Purchase <Bookkeeper
     @date_of_purchase = attributes['date_of_purchase']
   end
 
-  def ==(another_purchase)
+  def == another_purchase
     self.id == another_purchase.id &&
     self.amount == another_purchase.amount &&
     self.category_id == another_purchase.category_id &&
