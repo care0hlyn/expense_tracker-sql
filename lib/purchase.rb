@@ -1,7 +1,7 @@
 require 'pry'
 require 'bookkeeper'
 
-class Purchase <Bookkeeper
+class Purchase < Bookkeeper
 
   attr_reader :id, :amount, :description, :category_id, :date_of_purchase
 

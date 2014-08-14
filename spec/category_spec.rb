@@ -26,7 +26,7 @@ describe Category do
     test_purchase = Purchase.new({'amount' => 599, 'description' => 'kiteboard', 'date_of_purchase' => '2014-11-07'})
     test_purchase.save
     test_category.add_purchase(test_purchase)
-    expect(test_category.purchases).to eq [test_purchase]
+    expect(test_category.percentage).to eq 100.00
   end
 
 end
