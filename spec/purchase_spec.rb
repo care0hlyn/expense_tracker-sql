@@ -22,6 +22,12 @@ describe Purchase do
     expect(Purchase.all).to eq [test_purchase]
   end
 
-
+  it 'updates a decription for a purchase in the database' do
+    test_purchase = Purchase.new({'amount' => 599, 'description' => 'kiteboard', 'date_of_purchase' => '2014-11-07'})
+    test_purchase.save
+    new_description = 'wakeboard'
+    test_purchase.update(new_description)
+    expect(test_purchase.description).to eq 'wakeboard'
+  end
 
 end

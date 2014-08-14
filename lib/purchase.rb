@@ -15,11 +15,14 @@ class Purchase < Bookkeeper
 
   def == another_purchase
     self.id == another_purchase.id &&
-    self.amount == another_purchase.amount &&
-    self.category_id == another_purchase.category_id &&
-    self.description == another_purchase.description &&
-    self.date_of_purchase == another_purchase.date_of_purchase
+    self.amount == another_purchase.amount
   end
 
+  def update new_description
+
+    results = DB.exec("UPDATE purchases SET description = '#{new_description}' WHERE id = #{@id} RETURNING description;")
+    @description = results.first['description']
+
+  end
 
 end
