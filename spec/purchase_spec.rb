@@ -30,4 +30,10 @@ describe Purchase do
     expect(test_purchase.description).to eq 'wakeboard'
   end
 
+  it 'deletes a purchase from the database' do
+    test_purchase = Purchase.new({'amount' => 599, 'description' => 'kiteboard', 'date_of_purchase' => '2014-11-07'})
+    test_purchase.save
+    test_purchase.remove
+    expect(Purchase.all).to eq []
+  end
 end

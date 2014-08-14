@@ -19,10 +19,12 @@ class Purchase < Bookkeeper
   end
 
   def update new_description
-
     results = DB.exec("UPDATE purchases SET description = '#{new_description}' WHERE id = #{@id} RETURNING description;")
     @description = results.first['description']
+  end
 
+  def remove
+    DB.exec("DELETE FROM purchases WHERE id = #{@id}")
   end
 
 end
